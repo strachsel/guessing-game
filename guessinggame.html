@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About Me</title>
+</head>
+<body>
+  <!-- <button class="seen" onclick="yo()">Click Me 1st</button> -->
+
+  <h2 id="greeting"></h2>
+
+  <!-- <button class="seen" onclick="hidesee()">Now Click Me</button> -->
+
+  <div id="hidden" style="display:none">
+    <h3>Bio</h3>
+    <h5>-<i>My success isn't a result of arrogance - it's a result of belief</i>.</h5>
+
+    <p>I was born in Naples in 1991. My parents moved to Virginia about 2 weeks later where we lived for about 6 months. We then lived in Seattle for another year before moving to Portland.</p>
+
+    <p>I gruduated from Central Catholic High School in 2009 where I played basketball, soccer, and golf and wrote some fluff pieces for the school paper.</p>
+
+    <p>I attended the University of San Diego where I studied international relations and business.</p>
+
+    <p>After graudating in 2013 I had a couple job working for a non-profit assisting Irish students on temporary work visas in San Diego and for a outside sales company which I frankly would not recommend to anyone. That led me to where I am now working in the purchasing department at Craig Stein Beverage.</p>
+
+    <h4>Work</h4>
+      <p>I am currently a assitant buyer for a small beverage distribution company called CSB in Vancouver, WA.</p>
+      <p>The company primairily works in beer distribution; I handle the non-alcoholic and spirit accounts along with a lot of the supportive functions of my department.</p>
+
+    <h4>Misc</h4>
+      <p>I have lived in Portland for most of my life. I have a lot of extended family on the east coast so I have been over that way quite often.</p>
+      <p>I love basbetball so if anyone ever wants to shoot some hoops or hit up a blazer's game, you know who to call.</p>
+  </div>
+
+  <button onclick="guessquestions()" style="height:100px; font-size:25px; color:red">Click Here to Start Questions</button>
+
+  <script type="text/javascript">
+
+    var username = prompt("What is your name?");
+
+    function yo(){
+      if (username != "") {
+        document.getElementById('greeting').innerHTML = "Hello " + username + ". What's up, I'm Sean."; //this goes to the first button that says "click me."
+      }
+      else {
+        alert("You haven't entered a name."); //What's shown if you don't enter and click the first button.
+      }
+    }
+
+    yo();
+
+    function hidesee() {
+      if (username != "") {
+        document.getElementById('hidden').style.display="block"; //This displays the main content.
+
+        var seens = document.getElementsByClassName('seen'); //This loop hides the buttons.
+        for(i=0;i<seens.length;i++) {
+          seens[i].style.display="none";
+        }
+      }
+      else {
+        alert("GIVE ME A NAME DAMMIT!"); //What's shown if no name and hit second button.
+      }
+    }
+
+    hidesee();
+
+    console.log("Page should have greeted user and revealed bio");
+
+    //End of intial "reveal" javascript code. Below starts guessing game code.
+
+    function guessquestions() {
+      answered1 = false; //These variables will check the status if their question has been answered or not.
+      answered2 = false;
+      answered3 = false;
+
+
+      // The three followng while loops ask a different question. If the question is answered, the user recieves a response. If the question is not answered or answered in an invalid way, the question is asked again.
+      while (answered1 == false) {
+        var question1 = prompt("Was I born in Virginia?").toLowerCase();
+
+        if ((question1 == "no") || (question1 == "n")) {
+          alert("You are correct. I was born in Naples.");
+          answered1 = true;
+        }
+        else if ((question1 == "yes") || (question1 == "y")) {
+          alert("Sorry. That's not right. I was born in Naples.");
+          answered1 = true;
+        }
+        else {
+          alert("You didn't enter yes or no... or you didn't enter anything. In which case, WHAT IS WRONG WITH YOU??")
+        }
+      }
+
+      console.log("Question 1 has been answered.");
+
+      while (answered2 == false) {
+        var question2 = prompt("Do I work in Vancouver, WA?").toLowerCase();
+
+        if ((question2 == "yes") || (question2 == "y")) {
+          alert("That's right. Turns out I actually have a wonderful commute.");
+          answered2 = true;
+        }
+        else if ((question2 == "no") || (question2 == "n")) {
+          alert("Nope. I live in Oregon, work in Washington. I know, I'm an idiot.");
+          answered2 = true;
+        }
+        else {
+          alert("You didn't enter a valid answer. WHY WON'T YOU JUST PLAY THE GAME??");
+        }
+      }
+
+      console.log("Question 2 has been answered.");
+
+      while (answered3 == false) {
+        var question3 = prompt("Does most of my extended family live in Texas?").toLowerCase();
+        
+        if ((question3 == "no") || (question3 == "n")) {
+          alert("Yep. They live along the eastern seaboard. Virginia mostly.");
+          answered3 = true;
+        }
+        else if ((question3 == "yes") || (question3 == "y")) {
+          alert("Are you even reading this? Probably not, who could blame you. No, they're not in Texas.");
+          answered3 = true;
+        }
+        else {
+          alert("This is not ROCKET SCIENCE. YES OR NO. ARE YOU KIDDING ME???");
+        }
+      }
+
+      console.log("Question 1 has been answered.");
+
+      var correct = false;
+
+      //The below loop asks for a goes until the user answers 3.
+      while (correct == false) {
+        var sportsplayed = prompt("How many sports did I play in high school? Please answer with a number.")
+
+        if (sportsplayed == 3) {
+          alert("4 if you count weekend croquet rallies.");
+          correct = true;
+        }
+        else if (sportsplayed > 3) {
+          alert("Try a little lower. I wasn't THAT athletic.");
+        }
+        else {
+          alert("Try higher.")
+        }
+      }
+
+      alert("Thanks for playing.")
+
+    }
+
+
+  </script>
+</body>
+</html>
