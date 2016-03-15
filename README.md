@@ -1,4 +1,4 @@
-# guessing-game
+# guessing-game by Sean Loughran
 This page initially asks for the user's name which it prints out as well as gives access to the page's content.
 
 Upon clicking the button at the bottom of the page the user is asked 3 yes or no questions regarding the information on the page and additionally a higher/lower guess qeustion.
