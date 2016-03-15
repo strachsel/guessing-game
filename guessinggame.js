@@ -32,10 +32,12 @@ console.log("Page should have greeted user and revealed bio");
 //End of intial "reveal" javascript code. Below starts guessing game code.
 
 function guessquestions() {
-  answered1 = false; //These variables will check the status if their question has been answered or not.
-  answered2 = false;
-  answered3 = false;
+  var answered1 = false; //These variables will check the status if their question has been answered or not.
+  var answered2 = false;
+  var answered3 = false;
 
+  var correctcounter = 0;
+  var wrongcounter = 0;
 
 // The three followng while loops ask a different question. If the question is answered, the user recieves a response. If the question is not answered or answered in an invalid way, the question is asked again.
   while (answered1 == false) {
@@ -44,10 +46,12 @@ function guessquestions() {
     if ((question1 == "no") || (question1 == "n")) {
       alert("You are correct. I was born in Naples.");
       answered1 = true;
+      correctcounter++;
     }
     else if ((question1 == "yes") || (question1 == "y")) {
       alert("Sorry. That's not right. I was born in Naples.");
       answered1 = true;
+      wrongcounter++;
     }
     else {
       alert("You didn't enter yes or no... or you didn't enter anything. In which case, WHAT IS WRONG WITH YOU??")
@@ -62,10 +66,12 @@ function guessquestions() {
     if ((question2 == "yes") || (question2 == "y")) {
       alert("That's right. Turns out I actually have a wonderful commute.");
       answered2 = true;
+      correctcounter++;
     }
     else if ((question2 == "no") || (question2 == "n")) {
       alert("Nope. I live in Oregon, work in Washington. I know, I'm an idiot.");
       answered2 = true;
+      wrongcounter++;
     }
     else {
       alert("You didn't enter a valid answer. WHY WON'T YOU JUST PLAY THE GAME??");
@@ -80,10 +86,12 @@ function guessquestions() {
     if ((question3 == "no") || (question3 == "n")) {
       alert("Yep. They live along the eastern seaboard. Virginia mostly.");
       answered3 = true;
+      correctcounter++;
     }
     else if ((question3 == "yes") || (question3 == "y")) {
-      alert("Are you even reading this? Probably not, who could blame you. No, they're not in Texas.");
+      alert("Did you even read my bio? Probably not, who could blame you. No, they're not in Texas.");
       answered3 = true;
+      wrongcounter++;
     }
     else {
       alert("This is not ROCKET SCIENCE. YES OR NO. ARE YOU KIDDING ME???");
@@ -95,21 +103,48 @@ function guessquestions() {
   var correct = false;
 
   //The below loop asks for a goes until the user answers 3.
+  var tries = 0;
+
   while (correct == false) {
     var sportsplayed = prompt("How many sports did I play in high school? Please answer with a number.")
 
     if (sportsplayed == 3) {
       alert("4 if you count weekend croquet rallies.");
+      tries++;
       correct = true;
     }
     else if (sportsplayed > 3) {
       alert("Try a little lower. I wasn't THAT athletic.");
+      tries++;
+    }
+    else if (sportsplayed < 3) {
+      alert("Try higher.")
+      tries++;
     }
     else {
-      alert("Try higher.")
+      alert("I don't think you're entering a number.")
+      tries++;
     }
   }
 
-  alert("Thanks for playing.")
+  if (tries == 1) {
+    alert("You got "+correctcounter+"/3 yes or no questions correct and it took you 1 try to get the fourth qeustion. Thanks for playing."); //Message if it only took the player 1 try.
+  }
+  else {
+    alert("You got "+correctcounter+"/3 yes or no questions correct and it took you "+tries+" to get the fourth qeustion. Thanks for playing."); //Message if more.
+  }
+
+  var numquestion = prompt("PSYCH YOUR'RE NOT DONE YET. Now guess my favorite number between 1 and 10.");
+  var favnumber = 5;
+
+  if (numquestion == favnumber) {
+    alert("Ok now you're done.");
+  }
+  else {
+    while (numquestion != favnumber) {
+      numquestion = prompt("Nope guess again.")
+    }
+    alert("Ok now you're done.")
+  }
 
 }
